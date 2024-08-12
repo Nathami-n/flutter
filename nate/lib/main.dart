@@ -18,11 +18,16 @@ class MyApp extends StatelessWidget {
             body: const SingleChildScrollView(
               child: Column(
                 children: [
+                  ImageSection(image: "images/lake.jpg"),
                   TitleSection(
                     name: "This is a random playground",
                     location: "Rongai, Kenya",
                   ),
                   ButtonSection(),
+                  TextSection(
+                    description:
+                        "This is the description of this app I am currently working on this day and night to see to it that all goes on well",
+                  ),
                 ],
               ),
             )));
@@ -79,9 +84,9 @@ class ButtonSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final Color color = Theme.of(context).primaryColor;
     return Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-      ButtonWithText(color: color, icon: const IconData(1), label: "Share"),
-      ButtonWithText(color: color, icon: const IconData(1), label: "Like"),
-      ButtonWithText(color: color, icon: const IconData(1), label: "Favorite")
+      ButtonWithText(color: color, icon: Icons.share, label: "Share"),
+      ButtonWithText(color: color, icon: Icons.thumb_up, label: "Like"),
+      ButtonWithText(color: color, icon: Icons.favorite, label: "Favorite")
     ]);
   }
 }
@@ -114,6 +119,38 @@ class ButtonWithText extends StatelessWidget {
               )),
         )
       ],
+    );
+  }
+}
+
+class TextSection extends StatelessWidget {
+  const TextSection({super.key, required this.description});
+
+  final String description;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+        padding: const EdgeInsets.all(16),
+        child: Text(
+          description,
+          softWrap: true,
+        ));
+  }
+}
+
+class ImageSection extends StatelessWidget {
+  const ImageSection({super.key, required this.image});
+
+  final String image;
+
+  @override
+  Widget build(BuildContext context) {
+    return Image.asset(
+      image,
+      width: 600,
+      height: 240,
+      fit: BoxFit.cover,
     );
   }
 }
