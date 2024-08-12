@@ -7,17 +7,23 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const String appTitle = "Layout tutorial";
+    const String appTitle = "Nate App";
     return MaterialApp(
-      title: appTitle,
-      home: Scaffold(
-          appBar: AppBar(
-            title: const Text(appTitle),
-          ),
-          body: const Center(
-            child: Text("Hello world"),
-          )),
-    );
+        debugShowCheckedModeBanner: false,
+        title: appTitle,
+        home: Scaffold(
+            appBar: AppBar(
+              title: const Text(appTitle),
+            ),
+            body: const SingleChildScrollView(
+              child: Column(
+                children: [
+                TitleSection(
+                  name: "This is a random playground",
+                  location: "Rongai, Kenya",
+                )
+              ]),
+            )));
   }
 }
 
